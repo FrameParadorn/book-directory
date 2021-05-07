@@ -1,13 +1,17 @@
 <template>
-  <div></div>
+  <v-app>
+    <Header />
+  </v-app>
 </template>
 
 <script>
-export default {
-  name: 'App',
+import Header from "@/components/header/Header.vue"    
 
-  data: () => ({
-    //
-  }),
+
+export default {
+  components: {
+    Header
+  },
+  name: 'App',
 };
 </script>
