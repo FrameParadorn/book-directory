@@ -6,20 +6,34 @@
       sm="4"
       md="3"
       lg="2"
-      v-for="index in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]"
-      :key="index"
+      v-for="book in books"
+      :key="book.id"
     >
-      <BookCard to="/book/1"/>
+      <BookCard :to="`/book/${book.id}`" :book="book" />
     </v-col>
   </v-row>
 </template>
 
 <script>
+import { onMounted, computed } from "@vue/composition-api";
 import BookCard from "@/components/book/BookCard.vue";
+import store from "@/store";
 
 export default {
   components: {
     BookCard,
+  },
+  setup() {
+    onMounted(async () => {
+      await store.dispatch("book/fetchBooks");
+    });
+
+    const books = computed(() => store.state.book.books);
+    console.log(books)
+
+    return {
+      books,
+    };
   },
 };
 </script>

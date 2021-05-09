@@ -45,22 +45,6 @@ export default {
           },
         ],
       },
-      {
-        title: "category",
-        items: [
-          { name: "Antiques", length: 3, icon: "mdi-account-box" },
-          {
-            name: "Architecture",
-            length: 124,
-            icon: "mdi-animation-play-outline",
-          },
-          {
-            name: "Fashion & Textiles",
-            length: 131,
-            icon: "mdi-android-debug-bridge",
-          },
-        ],
-      },
     ]);
     return { menus };
   },
