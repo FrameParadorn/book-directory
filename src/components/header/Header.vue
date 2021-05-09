@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <v-app-bar app color="white" elevation="1">
-      <v-row>
-        <HeaderLogo />
-        <HeaderSearch />
-        <HeaderAvatar />
-      </v-row>
-    </v-app-bar>
-    <v-main>TEST</v-main>
-  </div>
+  <v-app-bar app color="white" elevation="1">
+    <v-row>
+      <HeaderLogo />
+      <HeaderSearch />
+      <HeaderAvatar />
+    </v-row>
+  </v-app-bar>
 </template>
 
 <script>

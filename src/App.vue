@@ -1,15 +1,25 @@
 <template>
   <v-app>
     <Header />
+    <v-main>
+      <v-row class="ma-0 fill-height" no-gutters>
+        <v-col cols="3">
+          <NavBar />
+        </v-col>
+        <v-col cols="9"></v-col>
+      </v-row>
+    </v-main>
   </v-app>
 </template>
 
 <script>
 import Header from "@/components/header/Header.vue";
+import NavBar from "@/components/navbar/NavBar.vue";
 
 export default {
   components: {
     Header,
+    NavBar,
   },
   name: "App",
 };
