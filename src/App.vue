@@ -3,10 +3,12 @@
     <Header />
     <v-main>
       <v-row class="ma-0 fill-height" no-gutters>
-        <v-col cols="3">
+        <v-col cols="12" md="2">
           <NavBar />
         </v-col>
-        <v-col cols="9"></v-col>
+        <v-col cols="12" md="10" class="pa-5">
+          <router-view></router-view>
+        </v-col>
       </v-row>
     </v-main>
   </v-app>

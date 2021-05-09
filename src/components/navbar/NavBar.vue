@@ -69,7 +69,7 @@ export default {
 
 <style scoped lang="scss">
 .navbar {
-  width: 85%;
+  width: 100%;
   height: 100%;
   background-color: #f5f5f5;
   color: gray;
