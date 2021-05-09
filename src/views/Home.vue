@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import BookCard from "@/components/Book/BookCard.vue";
+import BookCard from "@/components/book/BookCard.vue";
 
 export default {
   components: {
