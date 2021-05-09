@@ -1,6 +1,6 @@
 <template>
-  <v-col cols="6" class="d-flex align-center pa-0">
-    <v-col cols="8" class="pa-0">
+  <v-row class="align-center pa-0">
+    <v-col cols="7" class="pa-0">
       <v-text-field
         hide-details
         solo
@@ -10,7 +10,7 @@
       >
       </v-text-field>
     </v-col>
-    <v-col cols="4">
+    <v-col cols="3">
       <v-select
         :items="[]"
         label="Solo field"
@@ -19,10 +19,10 @@
         solo
       ></v-select>
     </v-col>
-    <v-col class="pa-0">
+    <v-col cols="2" class="pa-0">
       <v-btn elevation="2" color="white">
         <v-icon> mdi-magnify </v-icon>
       </v-btn>
     </v-col>
-  </v-col>
+  </v-row>
 </template>
