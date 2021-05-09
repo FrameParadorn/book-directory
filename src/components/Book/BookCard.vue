@@ -6,10 +6,10 @@
     ></v-img>
 
     <v-card-title class="title subtitle-2 font-weight-bold">
-      The English Encyclopædiahhaaaaaaaaaaaaaaaaaaaaaa
+      The English Encyclo
     </v-card-title>
 
-    <v-card-subtitle class="caption subtitle-2 text-truncate pb-0">
+    <v-card-subtitle class="caption subtitle-2 text-truncate pb-0 mt-0">
       Being a Collection of Treatises, and a Dictionary of Terms, Illustrative
       of the Arts and Sciences
     </v-card-subtitle>
@@ -36,12 +36,9 @@ export default {
 };
 </script>
 
-
 <style scoped>
 .title {
+  height: 60px;
   overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;  
 }
 </style>
