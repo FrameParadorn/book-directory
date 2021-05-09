@@ -11,17 +11,20 @@
         </v-col>
       </v-row>
     </v-main>
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Header from "@/components/header/Header.vue";
 import NavBar from "@/components/navbar/NavBar.vue";
+import Footer from "@/components/footer/Footer.vue";
 
 export default {
   components: {
     Header,
     NavBar,
+    Footer,
   },
   name: "App",
 };

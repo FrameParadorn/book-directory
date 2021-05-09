@@ -18,7 +18,7 @@ export default {
     HeaderFavoriteItem
   },
   setup() {
-    const show = ref(true);
+    const show = ref(false);
     return { show };
   },
 };
