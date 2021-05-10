@@ -2,7 +2,7 @@
   <router-link :to="to">
     <v-card max-width="200">
       <v-img
-        :src="book.volumeInfo.imageLinks.thumbnail"
+        :src="thumbnail"
         height="150px"
       ></v-img>
 
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import { computed } from "@vue/composition-api";
 import StarRating from "vue-star-rating";
 
 export default {
@@ -44,6 +45,19 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  setup(props) {
+    const { book } = props;
+
+    const imagePlaceholder = "https://via.placeholder.com/300";
+    const thumbnail = computed(() => {
+      return book?.volumeInfo?.imageLinks?.thumbnail || imagePlaceholder;
+    });
+
+    return {
+      imagePlaceholder,
+      thumbnail,
+    };
   },
 };
 </script>

@@ -11,6 +11,11 @@ const apiClient = axios.create({
 });
 
 
-export const getBooks = () => {
-  return apiClient.get("/volumes?q=antiques")
+export const getBooks = (perPage, page) => {
+  const params = {
+    q: "antiques",
+    maxResults: perPage,
+    startIndex: ( page - 1 )
+  } 
+  return apiClient.get("/volumes", { params })
 }
