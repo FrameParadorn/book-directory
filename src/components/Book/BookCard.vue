@@ -1,10 +1,7 @@
 <template>
   <router-link :to="to">
     <v-card max-width="200">
-      <v-img
-        :src="thumbnail"
-        height="150px"
-      ></v-img>
+      <v-img :src="thumbnail" height="150px"></v-img>
 
       <v-card-title class="title subtitle-2 font-weight-bold">
         {{ book.volumeInfo.title }}

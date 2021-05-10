@@ -2,32 +2,16 @@
   <div>
     <v-row>
       <v-col cols="4">
-        <BookSample />
+        <BookSample :book="book" />
       </v-col>
       <v-col cols="8">
-        <BookSampleDetail />
-        <BookSampleDescription />
+        <BookSampleDetail :book="book" />
+        <BookSampleDescription :book="book" />
       </v-col>
     </v-row>
     <v-row>
       <v-col>
-        <BookSampleDetailTable />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols=12>
-        <h4>Recommended For You</h4>
-      </v-col>
-      <v-col
-        class="justify-center"
-        cols="12"
-        sm="4"
-        md="3"
-        lg="2"
-        v-for="index in [1, 2, 3, 4, 5, 6]"
-        :key="index"
-      >
-        <BookCard />
+        <BookSampleDetailTable :book="book" />
       </v-col>
     </v-row>
   </div>
@@ -38,7 +22,8 @@ import BookSample from "@/components/book/BookSample.vue";
 import BookSampleDetail from "@/components/book/BookSampleDetail.vue";
 import BookSampleDescription from "@/components/book/BookSampleDescription.vue";
 import BookSampleDetailTable from "@/components/book/BookSampleDetailTable.vue";
-import BookCard from "@/components/book/BookCard.vue";
+import store from "@/store";
+import { onMounted, computed } from "@vue/composition-api";
 
 export default {
   components: {
@@ -46,7 +31,18 @@ export default {
     BookSampleDetail,
     BookSampleDescription,
     BookSampleDetailTable,
-    BookCard,
+  },
+  setup(props, context) {
+    const { id } = context.root._route.params;
+    onMounted(async () => {
+      await store.dispatch("book/fetchBook", id);
+    });
+
+    const book = computed(() => store.state.book.book);
+
+    return {
+      book,
+    };
   },
 };
 </script>

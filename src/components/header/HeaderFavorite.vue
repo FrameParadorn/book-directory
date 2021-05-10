@@ -11,11 +11,11 @@
 
 <script>
 import { ref } from "@vue/composition-api";
-import HeaderFavoriteItem from "@/components/header/HeaderFavoriteItem.vue"
+import HeaderFavoriteItem from "@/components/header/HeaderFavoriteItem.vue";
 
 export default {
   components: {
-    HeaderFavoriteItem
+    HeaderFavoriteItem,
   },
   setup() {
     const show = ref(false);

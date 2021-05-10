@@ -1,11 +1,27 @@
 <template>
   <div class="image-container">
-    <img
-      src="https://storage.naiin.com/system/application/bookstore/resource/product/202103/524176/1000240357_front_XXL.jpg"
-      class="full"
-    />
+    <img :src="image" class="full" />
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    book: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup({ book }) {
+    const image =
+      book?.volumeInfo?.imageLinks?.large || "https://via.placeholder.com/600";
+
+    return {
+      image,
+    };
+  },
+};
+</script>
 
 <style scoped lang="scss">
 .image-container {

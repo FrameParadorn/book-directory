@@ -40,7 +40,7 @@ export default {
 
     const books = computed(() => store.state.book.books);
     onMounted(async () => {
-      const categories = store.state.category.categories[0].items
+      const categories = store.state.category.categories[0].items;
       const keyword = query.keyword || randomKeyword(categories);
       await store.dispatch("book/setKeyword", keyword);
       await store.dispatch("book/fetchBooks");
@@ -63,6 +63,6 @@ export default {
 
 const randomKeyword = (keywords = []) => {
   let numberRandom = Math.floor(Math.random() * keywords.length);
-  return keywords[numberRandom]?.name || "flowers+intitle"
+  return keywords[numberRandom]?.name || "flowers+intitle";
 };
 </script>

@@ -4,33 +4,56 @@
       <tbody>
         <tr>
           <td>ISBN</td>
-          <td>9780857504517</td>
+          <td>{{ industryIdentifiers[1] || "" }}</td>
         </tr>
         <tr>
           <td>Author</td>
-          <td>CHILD, LEE</td>
-        </tr>
-        <tr>
-          <td>Weight (kgs.)</td>
-          <td>0.253</td>
+          <td>{{ authors[0] || "" }}</td>
         </tr>
         <tr>
           <td>Publisher</td>
-          <td>TRANSWORLD PUBLISHER</td>
+          <td>{{ publisher || "" }}</td>
         </tr>
         <tr>
           <td>Publication Date</td>
-          <td>เม.ย. 2, 2020</td>
+          <td>{{ publishedDate || "" }}</td>
         </tr>
         <tr>
           <td>Number of Pages</td>
-          <td>480</td>
+          <td>{{ pageCount || "" }}</td>
         </tr>
       </tbody>
     </v-simple-table>
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    book: {
+      type: Object,
+      required: true,
+    },
+  },
+  setup({ book }) {
+    const {
+      industryIdentifiers,
+      authors,
+      publisher,
+      publishedDate,
+      pageCount,
+    } = book.volumeInfo;
+
+    return {
+      industryIdentifiers,
+      authors,
+      publisher,
+      publishedDate,
+      pageCount,
+    };
+  },
+};
+</script>
 
 <style>
 table td:first-child {

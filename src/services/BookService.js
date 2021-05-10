@@ -10,12 +10,15 @@ const apiClient = axios.create({
   timeout: 10000,
 });
 
-
-export const getBooks = ({perPage, page, keyword}) => {
+export const getBookAll = ({ perPage, page, keyword }) => {
   const params = {
     q: keyword,
     maxResults: perPage,
-    startIndex: ( page - 1 )
-  } 
-  return apiClient.get("/volumes", { params })
-}
+    startIndex: page - 1,
+  };
+  return apiClient.get("/volumes", { params });
+};
+
+export const getBookOne = (id) => {
+  return apiClient.get(`/volumes/${id}`);
+};

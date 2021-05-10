@@ -27,13 +27,17 @@ import { computed } from "@vue/composition-api";
 import store from "@/store";
 
 export default {
-  setup() {
+  setup(props, context) {
+    const router = context.root._router;
     const menus = computed(() => store.state.category.categories);
 
     const changeCategory = async (categoryName) => {
+      if (router.app._route.fullPath !== "/") {
+        router.push({ path: "/" });
+      }
       store.dispatch("book/setKeyword", categoryName);
       await store.dispatch("book/fetchBooks");
-    }
+    };
 
     return { menus, changeCategory };
   },
