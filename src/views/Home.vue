@@ -35,16 +35,20 @@ export default {
   components: {
     BookCard,
   },
-  setup() {
+  setup(props, context) {
+    const { query } = context.root._route;
+
+    const books = computed(() => store.state.book.books);
     onMounted(async () => {
+      const categories = store.state.category.categories[0].items
+      const keyword = query.keyword || randomKeyword(categories);
+      await store.dispatch("book/setKeyword", keyword);
       await store.dispatch("book/fetchBooks");
     });
 
     const changePage = (page) => {
       store.dispatch("book/setPage", page);
     };
-
-    const books = computed(() => store.state.book.books);
     const totalPage = computed(() => store.state.book.totalPage);
     const page = computed(() => store.state.book.page);
 
@@ -55,5 +59,10 @@ export default {
       changePage,
     };
   },
+};
+
+const randomKeyword = (keywords = []) => {
+  let numberRandom = Math.floor(Math.random() * keywords.length);
+  return keywords[numberRandom]?.name || "flowers+intitle"
 };
 </script>

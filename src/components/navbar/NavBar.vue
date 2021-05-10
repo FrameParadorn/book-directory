@@ -12,11 +12,10 @@
           :key="`${itemIndex}-navbar-item`"
           class="pa-1"
         >
-          <router-link to="/foo">
+          <div @click="changeCategory(item.name)">
             <v-icon>{{ item.icon }}</v-icon>
             {{ item.name }}
-            ({{ item.length }})
-          </router-link>
+          </div>
         </li>
       </ul>
     </div>
@@ -24,29 +23,19 @@
 </template>
 
 <script>
-import { ref } from "@vue/composition-api";
+import { computed } from "@vue/composition-api";
+import store from "@/store";
 
 export default {
   setup() {
-    const menus = ref([
-      {
-        title: "category",
-        items: [
-          { name: "Antiques", length: 3, icon: "mdi-account-box" },
-          {
-            name: "Architecture",
-            length: 124,
-            icon: "mdi-animation-play-outline",
-          },
-          {
-            name: "Fashion & Textiles",
-            length: 131,
-            icon: "mdi-android-debug-bridge",
-          },
-        ],
-      },
-    ]);
-    return { menus };
+    const menus = computed(() => store.state.category.categories);
+
+    const changeCategory = async (categoryName) => {
+      store.dispatch("book/setKeyword", categoryName);
+      await store.dispatch("book/fetchBooks");
+    }
+
+    return { menus, changeCategory };
   },
 };
 </script>
@@ -68,9 +57,10 @@ export default {
     padding: 0;
   }
 
-  a {
+  li {
     text-decoration: none;
     color: gray;
+    cursor: pointer;
   }
 }
 </style>
